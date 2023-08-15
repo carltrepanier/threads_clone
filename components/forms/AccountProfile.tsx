@@ -4,7 +4,6 @@ import { useForm } from "react-hook-form";
 import {
   Form,  
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -14,13 +13,13 @@ import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { UserValidation } from "@/lib/validations/user";
 import { Button } from "../ui/button";
-import Image from "next/image";
 import { ChangeEvent, useState } from "react";
 import { Textarea } from "../ui/textarea";
 import { isBase64Image } from "@/lib/utils";
 import { useUploadThing } from "@/lib/uploadthing";
 import { updateUser } from "@/lib/actions/user.actions";
 import { usePathname, useRouter } from "next/navigation";
+import Image from "next/image";
 import * as z from "zod";
 interface Props {
   user: {
@@ -40,7 +39,7 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
   const router = useRouter();
   const pathname = usePathname();
   
-  const form = useForm({
+  const form = useForm<z.infer<typeof UserValidation>>({
     resolver: zodResolver(UserValidation),
     defaultValues: {
       profile_photo: user?.image || "",
@@ -205,7 +204,7 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
           )}
         />
 
-        <Button type="submit">Submit</Button>
+        <Button type="submit" className="bg-primary-500">{btnTitle}</Button>
       </form>
     </Form>
   );
