@@ -4,7 +4,6 @@ import { revalidatePath } from "next/cache";
 import Thread from "../models/thread.model";
 import User from "../models/user.model";
 import { connectToDB } from "../mongoose";
-import { skip } from "node:test";
 
 interface Params {
   text: string;
