@@ -23,7 +23,7 @@ interface Props {
   currentUserId: string;
 };
 
-function Comment({ threadId, currentUserImg, currentUserId }: Props) {
+export default function Comment({ threadId, currentUserImg, currentUserId }: Props) {
   const pathname = usePathname();
 
   const form = useForm<z.infer<typeof CommentValidation>>({
@@ -80,5 +80,3 @@ function Comment({ threadId, currentUserImg, currentUserId }: Props) {
     </Form>
   );
 };
-
-export default Comment;

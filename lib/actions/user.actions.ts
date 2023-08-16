@@ -1,11 +1,24 @@
-"use server"
+"use server";
 
+import { FilterQuery, SortOrder } from "mongoose";
 import { revalidatePath } from "next/cache";
 import { connectToDB } from "../mongoose";
-import { FilterQuery, SortOrder } from "mongoose";
 import Community from "../models/community.model";
-import User from "../models/user.model";
 import Thread from "../models/thread.model";
+import User from "../models/user.model";
+
+export async function fetchUser(userId: string) {
+  try {
+    connectToDB();
+
+    return await User.findOne({ id: userId }).populate({
+      path: "communities",
+      model: Community,
+    });
+  } catch (error: any) {
+    throw new Error(`Failed to fetch user: ${error.message}`);
+  }
+};
 
 interface Params {
   userId: string;
@@ -18,45 +31,32 @@ interface Params {
 
 export async function updateUser({
   userId,
-  username,
-  name,
   bio,
-  image,
+  name,
   path,
+  username,
+  image,
 }: Params): Promise<void> {
-  connectToDB();
-
   try {
+    connectToDB();
+
     await User.findOneAndUpdate(
-      { id: userId},
+      { id: userId },
       {
         username: username.toLowerCase(),
         name,
         bio,
         image,
-        onboarding: true,
+        onboarded: true,
       },
       { upsert: true }
     );
-  
+
     if (path === "/profile/edit") {
       revalidatePath(path);
-    };
+    }
   } catch (error: any) {
     throw new Error(`Failed to create/update user: ${error.message}`);
-  }
-};
-
-export async function fetchUser(userId: string) {
-  try {
-    connectToDB();
-
-    return await User.findOne({ id: userId }).populate({
-      path: "communities",
-      model: Community,
-    });
-  } catch (error: any) {
-    throw new Error(`Failed to fetch user: ${error.message}`);
   }
 };
 
@@ -86,7 +86,7 @@ export async function fetchUserPosts(userId: string) {
       ],
     });
   } catch (error: any) {
-    throw new Error(`Failed to fetch user posts: ${error.message}`);
+    throw new error (`Failed to fetch user posts: ${error.message}`);
   }
 };
 
@@ -97,7 +97,7 @@ export async function fetchUsers({
   pageNumber = 1,
   pageSize = 20,
   sortBy = "desc",
-} : {
+}: {
   userId: string;
   searchString?: string;
   pageNumber?: number;
@@ -144,7 +144,7 @@ export async function fetchUsers({
 
     return { users, isNext };
   } catch (error: any) {
-    throw new Error(`Failed to fetch users: ${error.message}`);
+    throw new error (`Failed to fetch users: ${error.message}`);
   }
 };
 
@@ -170,6 +170,6 @@ export async function getActivity(userId: string) {
       select: "name image _id",
     });
   } catch (error: any) {
-    throw new Error(`Failed to fetch user activity: ${error.message}`);
+    throw new error (`Failed to fetch user activity: ${error.message}`);
   }
 };

@@ -33,7 +33,7 @@ interface Props {
   btnTitle: string;
 };
 
-const AccountProfile = ({ user, btnTitle }: Props) => {
+export default function AccountProfile({ user, btnTitle }: Props) {
   const [files, setFiles] = useState<File[]>([]);
   const { startUpload } = useUploadThing("media");
   const router = useRouter();
@@ -209,5 +209,3 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
     </Form>
   );
 };
-
-export default AccountProfile;

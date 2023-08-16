@@ -7,7 +7,7 @@ import { redirect } from "next/navigation";
 
 export const revalidate = 0;
 
-async function Page({ params }: { params: { id: string }}) {
+export default async function Page({ params }: { params: { id: string }}) {
   if (!params.id) {
     return null;
   };
@@ -66,5 +66,3 @@ async function Page({ params }: { params: { id: string }}) {
     </section>
   );
 };
-
-export default Page;
