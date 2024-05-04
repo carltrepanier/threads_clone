@@ -9,7 +9,7 @@
 		"lint": "next lint"
 	},
 	"dependencies": {
-		"@clerk/nextjs": "^4.29.10",
+		"@clerk/nextjs": "^4.29.12",
 		"@clerk/themes": "^1.7.11",
 		"@hookform/resolvers": "^3.2.0",
 		"@radix-ui/react-label": "^2.0.2",
@@ -17,7 +17,7 @@
 		"@radix-ui/react-tabs": "^1.0.4",
 		"@types/react-dom": "18.2.23",
 		"@types/react": "18.2.75",
-		"@types/node": "20.12.3",
+		"@types/node": "20.12.7",
 		"@uploadthing/react": "^5.2.1",
 		"autoprefixer": "10.4.19",
 		"class-variance-authority": "^0.7.0",
