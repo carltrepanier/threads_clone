@@ -9,8 +9,8 @@
 		"lint": "next lint"
 	},
 	"dependencies": {
-		"@clerk/nextjs": "^4.29.12",
 		"@clerk/themes": "^1.7.13",
+		"@clerk/nextjs": "^4.30.0",
 		"@hookform/resolvers": "^3.2.0",
 		"@radix-ui/react-label": "^2.0.2",
 		"@radix-ui/react-slot": "^1.0.2",
@@ -25,7 +25,7 @@
 		"lucide-react": "^0.370.0",
 		"mongoose": "^8.3.2",
 		"mongoose": "^8.2.4",
-		"next": "^13.4.16",
+		"next": "^14.1.1",
 		"postcss": "^8.4.38",
 		"react": "18.2.0",
 		"react-dom": "18.2.0",
