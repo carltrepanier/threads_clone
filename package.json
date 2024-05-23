@@ -9,7 +9,7 @@
 		"lint": "next lint"
 	},
 	"dependencies": {
-		"@clerk/themes": "^1.7.13",
+		"@clerk/themes": "^1.7.14",
 		"@clerk/nextjs": "^4.30.0",
 		"@hookform/resolvers": "^3.2.0",
 		"@radix-ui/react-label": "^2.0.2",
@@ -22,7 +22,7 @@
 		"autoprefixer": "10.4.19",
 		"class-variance-authority": "^0.7.0",
 		"clsx": "^2.1.1",
-		"lucide-react": "^0.376.0",
+		"lucide-react": "^0.377.0",
 		"mongoose": "^8.3.3",
 		"mongoose": "^8.2.4",
 		"next": "^14.2.3",
