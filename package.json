@@ -9,7 +9,7 @@
 		"lint": "next lint"
 	},
 	"dependencies": {
-		"@clerk/nextjs": "^5.7.5",
+		"@clerk/nextjs": "^6.21.0",
 		"@clerk/themes": "^1.7.19",
 		"@hookform/resolvers": "^3.9.0",
 		"@radix-ui/react-tabs": "^1.1.1",
